@@ -62,23 +62,48 @@
             margin-top: 40px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
         }
 
-        li {
-            background: #fff;
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
             padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .flash-messages {
+            width: 300px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
     <h1>Realizar Reservas Shurima</h1>
-    <form action="/reserve" method="post">
+    <form id="reservation-form" action="/reserve" method="post">
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" required>
         <br>
@@ -90,20 +115,46 @@
         <br>
         <label for="type">Tipo de Espacio:</label>
         <select id="type" name="type" required>
-            <option value="Parrillero">Parrillero</option>
-            <option value="Espacio de acampada">Espacio de acampada</option>
-            <option value="Espacio al aire libre">Espacio al aire libre</option>
-            <option value="Cancha de Futbol">Cancha de Futbol</option>
+            {% for lugar in lugares %}
+                <option value="{{ lugar.nombre }}">{{ lugar.nombre }}</option>
+            {% endfor %}
         </select>
         <br>
         <button type="submit">Reservar</button>
     </form>
 
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
     <h2>Reservas</h2>
-    <ul>
-        {% for reservation in reservations %}
-            <li>{{ reservation[1] }} - {{ reservation[2] }} a las {{ reservation[3] }} en {{ reservation[4] }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.name }}</td>
+                <td>{{ reservation.date }}</td>
+                <td>{{ reservation.time }}</td>
+                <td>{{ reservation.type }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
