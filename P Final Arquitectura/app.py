@@ -1,10 +1,9 @@
-import sqlite3
-import os
 from flask import Flask, request, redirect, url_for, render_template, flash
-
 from controllers.controller_shurima import ControllerShurima
 from API_Fechas.fechas_api import fechas_api
 from api_lugares.lugares_api import lugares_api
+import sqlite3
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -44,6 +43,7 @@ def index():
 @app.route('/reserve', methods=['POST'])
 def reserve():
     name = request.form['name']
+    email = request.form['email']
     date = request.form['date']
     time = request.form['time']
     type = request.form['type']
@@ -61,11 +61,27 @@ def reserve():
         return redirect(url_for('index'))
 
     # Si no existe, realizar la inserción
-    c.execute('INSERT INTO reservations (name, date, time, type) VALUES (?, ?, ?, ?)', (name, date, time, type))
+    c.execute('INSERT INTO reservations (name, email, date, time, type) VALUES (?, ?, ?, ?, ?)', (name, email, date, time, type))
     conn.commit()
     flash('Reserva realizada con éxito.', 'success')
     
+    # Obtener la ID de la reserva recién creada
+    reservation_id = c.lastrowid
     conn.close()
+
+    # Crear el diccionario de reserva
+    reservation = {
+        'id': reservation_id,
+        'name': name,
+        'email': email,
+        'date': date,
+        'time': time,
+        'type': type
+    }
+    
+    # Enviar la reserva a RabbitMQ y comenzar a consumir
+    controller.add_reservation(reservation)
+
     return redirect(url_for('index'))
 
 @app.route('/check_availability', methods=['GET'])

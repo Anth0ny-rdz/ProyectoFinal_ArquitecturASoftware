@@ -6,7 +6,7 @@ import ast
 
 def send_email(reservation):
     sender_email = "didierguerrero70@gmail.com"
-    receiver_email = "didierguerrero9078@gmail.com"
+    receiver_email = reservation['email']
     password = "arfg qgqp flsy sfqp"
 
     message = MIMEMultipart("alternative")
@@ -20,7 +20,6 @@ def send_email(reservation):
     Fecha: {reservation['date']}
     Hora: {reservation['time']}
     Tipo de Espacio: {reservation['type']}
-    
     
     **Modificaciones a la reservas comunicarse con el servicio técnico.
     **Recuerde que si requiere cancelar la reserva se deberá realizar con 48 horas de anticipación, contactando con servicio técnico.
@@ -38,6 +37,7 @@ def callback(ch, method, properties, body):
     print(f"Received {body}")
     reservation = ast.literal_eval(body.decode())
     send_email(reservation)
+    ch.stop_consuming()
 
 def start_consuming():
     credentials = pika.PlainCredentials('admin', '12Didier')
@@ -47,6 +47,7 @@ def start_consuming():
     channel.basic_consume(queue='email_queue', on_message_callback=callback, auto_ack=True)
     print('Esperando mensaje, para salir CTRL+C')
     channel.start_consuming()
+    connection.close()
 
 if __name__ == '__main__':
     start_consuming()

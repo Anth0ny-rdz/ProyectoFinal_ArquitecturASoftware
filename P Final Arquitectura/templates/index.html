@@ -1,160 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reservas Espacios Recreacionales Shurima</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f5;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f5;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-        h1 {
-            color: #333;
-        }
+      h1 {
+        color: #333;
+      }
 
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            display: flex;
-            flex-direction: column;
-        }
+      form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+      }
 
-        label {
-            margin-bottom: 5px;
-            color: #555;
-        }
+      label {
+        margin-bottom: 5px;
+        color: #555;
+      }
 
-        input[type="text"],
-        input[type="date"],
-        input[type="time"],
-        select {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+      input[type="text"],
+      input[type="date"],
+      input[type="time"],
+      select {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
 
-        button {
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #5a67d8;
-            color: white;
-            cursor: pointer;
-        }
+      button {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #5a67d8;
+        color: white;
+        cursor: pointer;
+      }
 
-        button:hover {
-            background-color: #434190;
-        }
+      button:hover {
+        background-color: #434190;
+      }
 
-        h2 {
-            color: #333;
-            margin-top: 40px;
-        }
+      h2 {
+        color: #333;
+        margin-top: 40px;
+      }
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 20px;
-        }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin-top: 20px;
+      }
 
-        table, th, td {
-            border: 1px solid #ccc;
-        }
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
 
-        th {
-            background-color: #f2f2f2;
-        }
+      th {
+        background-color: #f2f2f2;
+      }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
 
-        tr:hover {
-            background-color: #f1f1f1;
-        }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
 
-        .flash-messages {
-            width: 300px;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .flash-messages {
+        width: 300px;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Realizar Reservas Shurima</h1>
     <form id="reservation-form" action="/reserve" method="post">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" required>
-        <br>
-        <label for="time">Hora:</label>
-        <input type="time" id="time" name="time" required>
-        <br>
-        <label for="type">Tipo de Espacio:</label>
-        <select id="type" name="type" required>
-            {% for lugar in lugares %}
-                <option value="{{ lugar.nombre }}">{{ lugar.nombre }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <button type="submit">Reservar</button>
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required />
+      <br />
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" id="email" name="email" required />
+      <br />
+      <label for="date">Fecha:</label>
+      <input type="date" id="date" name="date" required />
+      <br />
+      <label for="time">Hora:</label>
+      <input type="time" id="time" name="time" required />
+      <br />
+      <label for="type">Tipo de Espacio:</label>
+      <select id="type" name="type" required>
+        {% for lugar in lugares %}
+        <option value="{{ lugar.nombre }}">{{ lugar.nombre }}</option>
+        {% endfor %}
+      </select>
+      <br />
+      <button type="submit">Reservar</button>
     </form>
 
     <div class="flash-messages">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %} {% endif %} {% endwith %}
     </div>
 
     <h2>Reservas</h2>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Tipo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for reservation in reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.name }}</td>
-                <td>{{ reservation.date }}</td>
-                <td>{{ reservation.time }}</td>
-                <td>{{ reservation.type }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reservation in reservations %}
+        <tr>
+          <td>{{ reservation.id }}</td>
+          <td>{{ reservation.name }}</td>
+          <td>{{ reservation.date }}</td>
+          <td>{{ reservation.time }}</td>
+          <td>{{ reservation.type }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
-</body>
+  </body>
 </html>

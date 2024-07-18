@@ -1,15 +1,18 @@
 import webbrowser
 from threading import Timer
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from app import app, controller
-from middleware import WSGIMiddleware
 
-middleware = WSGIMiddleware(app)
+# Assuming you want to use DispatcherMiddleware from Werkzeug
+middleware = DispatcherMiddleware(app)
 
 def open_browser():
     webbrowser.open_new('http://127.0.0.1:5000/')
 
 if __name__ == "__main__":
     try:
-        app.run(debug=True)
+        from werkzeug.serving import run_simple
+        # Use the middleware with your app
+        run_simple('localhost', 5000, middleware, use_debugger=True)
     finally:
         controller.close_connection()
