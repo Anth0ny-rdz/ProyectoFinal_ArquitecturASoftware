@@ -22,7 +22,7 @@ class ControllerShurima:
         self.start_single_consuming()
 
     def start_single_consuming(self):
-        # Start consuming a single message in a separate thread
+        # Consumir en un solo hilo de procesamiento
         consume_thread = threading.Thread(target=start_consuming)
         consume_thread.start()
 

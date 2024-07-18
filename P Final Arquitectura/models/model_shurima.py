@@ -1,8 +1,11 @@
 import sqlite3
+import os
 
 class ModelShurima:
     def __init__(self):
-        self.conn = sqlite3.connect('reservations.sql')
+        # Definir el directorio de la base de datos
+        self.database_path = os.path.join(os.path.dirname(__file__), 'database', 'reservations.sql')
+        self.conn = sqlite3.connect(self.database_path)
         self.c = self.conn.cursor()
 
     def add_reservation(self, name, email, date, time, type):

@@ -1,4 +1,4 @@
-import sqlite3
+"""import sqlite3
 
 def init_db():
     conn = sqlite3.connect('reservations.sql')
@@ -18,3 +18,4 @@ def init_db():
 if __name__ == "__main__":
     init_db()
     print("Database initialized")
+"""

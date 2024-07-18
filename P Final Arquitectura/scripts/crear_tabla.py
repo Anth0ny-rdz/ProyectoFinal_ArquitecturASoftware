@@ -1,6 +1,7 @@
 import sqlite3
+import os
 
-DATABASE = 'reservations.sql'
+DATABASE = os.path.join(os.path.dirname(__file__),'..', 'database', 'reservations.sql')
 
 def remove_duplicates():
     conn = sqlite3.connect(DATABASE)
@@ -31,7 +32,7 @@ def add_cosas():
     
     # Aquí se insertan más weas :v
     #Cambio pal commit
-    c.execute('INSERT INTO lugares (nombre, descripcion) VALUES (?, ?)', ('Sala de ESports', 'Pa jugar el Valo, pa'))
+    c.execute('INSERT INTO lugares (nombre, descripcion) VALUES (?, ?)', ('Cancha de basket', 'Cancha amplia con todas las comodidades para los usuarios'))
     
     conn.commit()
     conn.close()

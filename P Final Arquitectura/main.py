@@ -3,7 +3,6 @@ from threading import Timer
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from app import app, controller
 
-# Assuming you want to use DispatcherMiddleware from Werkzeug
 middleware = DispatcherMiddleware(app)
 
 def open_browser():

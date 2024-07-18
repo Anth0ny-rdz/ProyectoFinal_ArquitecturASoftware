@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify
 import sqlite3
+import os
 
 lugares_api = Blueprint('lugares_api', __name__)
 
-DATABASE = 'reservations.sql'
+DATABASE = os.path.join(os.path.dirname(__file__), 'database', 'reservations.sql')
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
