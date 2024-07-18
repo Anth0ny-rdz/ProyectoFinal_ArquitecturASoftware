@@ -1,3 +1,4 @@
+import sqlite3
 def initialize_db():
     conn = sqlite3.connect('reservations.sql')
     c = conn.cursor()
@@ -7,7 +8,8 @@ def initialize_db():
             name TEXT NOT NULL,
             date TEXT NOT NULL,
             time TEXT NOT NULL,
-            type TEXT NOT NULL
+            type TEXT NOT NULL,
+            email TEXT NOT NULL
         )
     ''')
     conn.commit()

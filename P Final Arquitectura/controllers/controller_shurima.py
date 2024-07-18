@@ -1,7 +1,6 @@
 import pika
 from Suscriptor.subscriber import start_consuming
-
-
+from models.model_shurima import ModelShurima  # Asegúrate de importar tu modelo correctamente
 
 class ControllerShurima:
     def __init__(self):
@@ -11,6 +10,7 @@ class ControllerShurima:
         self.connection = pika.BlockingConnection(self.parameters)
         self.channel = self.connection.channel()
         self.channel.queue_declare(queue='email_queue')
+        self.model = ModelShurima()  # Inicializa el modelo aquí
 
     def add_reservation(self, reservation):
         # Publicar mensaje en RabbitMQ
