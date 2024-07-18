@@ -18,6 +18,6 @@ if __name__ == "__main__":
     reservas = verificar_reservas()
     if reservas:
         for reserva in reservas:
-            print(f"ID: {reserva[0]}, Nombre: {reserva[1]}, Fecha: {reserva[2]}, Hora: {reserva[3]}, Tipo: {reserva[4]}, Email: {reserva[5]}")
+            print(f"ID: {reserva[0]}, Nombre: {reserva[1]}, Fecha: {reserva[2]}, Hora: {reserva[3]}, Tipo: {reserva[4]}")
     else:
         print("No hay reservas almacenadas.")
