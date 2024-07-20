@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\APITime\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|C:\\Users\\USUARIO\\source\\repos\\APITime\\scripts\\init_db.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\scripts\\init_db.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|solutionrelative:scripts\\init_db.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|C:\\Users\\USUARIO\\source\\repos\\APITime\\time_api.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\time_api.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|solutionrelative:time_api.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|C:\\Users\\USUARIO\\source\\repos\\APITime\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{07F0B334-043E-4339-BD11-E1E7D2342306}|APITime.pyproj|solutionrelative:app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
@@ -36,11 +36,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "init_db.py",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\APITime\\scripts\\init_db.py",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\scripts\\init_db.py",
               "RelativeDocumentMoniker": "scripts\\init_db.py",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\APITime\\scripts\\init_db.py",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\scripts\\init_db.py",
               "RelativeToolTip": "scripts\\init_db.py",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAwBsAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-07-20T16:29:35.269Z",
               "EditorCaption": ""
@@ -49,27 +49,25 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "time_api.py",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\APITime\\time_api.py",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\time_api.py",
               "RelativeDocumentMoniker": "time_api.py",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\APITime\\time_api.py",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\time_api.py",
               "RelativeToolTip": "time_api.py",
               "ViewState": "AQIAABMAAAAAAAAAAAAowCsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-20T16:26:38.031Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-20T16:26:38.031Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "app.py",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\APITime\\app.py",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\app.py",
               "RelativeDocumentMoniker": "app.py",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\APITime\\app.py",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\arqui 2\\APITime\\app.py",
               "RelativeToolTip": "app.py",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-20T16:25:39.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-20T16:25:39.352Z"
             }
           ]
         }

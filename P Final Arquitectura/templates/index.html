@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reservas Espacios Recreacionales Shurima</title>
+    <title>Recreational Spaces Reservations Shurima</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -106,28 +106,28 @@
     </style>
   </head>
   <body>
-    <h1>Realizar Reservas Shurima</h1>
+    <h1>Make Reservations Shurima</h1>
     <form id="reservation-form" action="/reserve" method="post">
-      <label for="name">Nombre:</label>
+      <label for="name">Name:</label>
       <input type="text" id="name" name="name" required />
       <br />
-      <label for="email">Correo Electrónico:</label>
+      <label for="email">Email:</label>
       <input type="email" id="email" name="email" required />
       <br />
-      <label for="date">Fecha:</label>
+      <label for="date">Date:</label>
       <input type="date" id="date" name="date" required />
       <br />
-      <label for="time">Hora:</label>
+      <label for="time">Time:</label>
       <input type="time" id="time" name="time" required />
       <br />
-      <label for="type">Tipo de Espacio:</label>
+      <label for="type">Type of Space:</label>
       <select id="type" name="type" required>
-        {% for lugar in space_types %}
-        <option value="{{ lugar }}">{{ lugar }}</option>
+        {% for space in space_types %}
+        <option value="{{ space }}">{{ space }}</option>
         {% endfor %}
       </select>
       <br />
-      <button type="submit">Reservar</button>
+      <button type="submit">Reserve</button>
     </form>
 
     <div class="flash-messages">
@@ -140,14 +140,14 @@
       {% endwith %}
     </div>
 
-    <h2>Disponibilidad de Fechas y Tiempos</h2>
+    <h2>Available Dates and Times</h2>
     <table>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Tipo de Espacio</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Type of Space</th>
         </tr>
       </thead>
       <tbody>
@@ -162,15 +162,15 @@
       </tbody>
     </table>
 
-    <h2>Reservas desde la Base de Datos Local</h2>
+    <h2>Reservations from Local Database</h2>
     <table>
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Tipo</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Type</th>
         </tr>
       </thead>
       <tbody>

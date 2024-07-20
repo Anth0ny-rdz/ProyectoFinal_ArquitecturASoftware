@@ -8,7 +8,7 @@ DATABASE = os.path.join(os.path.dirname(__file__), 'scripts', 'database', 'avail
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row  # Obtener filas como diccionarios
+    conn.row_factory = sqlite3.Row  # Get rows as dictionaries
     return conn
 
 @time_api.route('/api/times', methods=['GET'])
@@ -37,7 +37,7 @@ def get_times():
     available_times = c.fetchall()
     conn.close()
 
-    available_times = [dict(row) for row in available_times]  # Convertir filas a diccionarios
+    available_times = [dict(row) for row in available_times]  # Convert rows to dictionaries
     return jsonify(available_times)
 
 @time_api.route('/api/times', methods=['POST'])

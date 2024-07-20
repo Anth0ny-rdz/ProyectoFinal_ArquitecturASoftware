@@ -10,7 +10,7 @@ def create_db():
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
 
-    # Crear la tabla availability
+    # Create the availability table
     c.execute('''
         CREATE TABLE IF NOT EXISTS availability (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-# Definir el directorio de la base de datos
+# Define the database directory
 DATABASE = os.path.join(os.path.dirname(__file__), 'database', 'reservations.sql')
 
 def verificar_base_datos():
@@ -13,7 +13,7 @@ def verificar_base_datos():
         conn = sqlite3.connect(DATABASE)
         c = conn.cursor()
         
-        # Verificar existencia de tabla reservations
+        # Verify existence of reservations table
         c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='reservations'")
         reservations_table = c.fetchone()
         
@@ -22,7 +22,7 @@ def verificar_base_datos():
         else:
             print("Tabla 'reservations' no encontrada.")
         
-        # Verificar existencia de tabla lugares
+        # Verify existence of places table
         c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='lugares'")
         lugares_table = c.fetchone()
         

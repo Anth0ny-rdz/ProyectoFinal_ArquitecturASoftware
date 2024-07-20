@@ -89,11 +89,11 @@ def reserve():
                   (name, email, date, time, type))
         conn.commit()
 
-        # Obtener la ID de la reserva recién creada
+        # Get the ID of the newly created reservation
         reservation_id = c.lastrowid
         conn.close()
 
-        # Crear el diccionario de reserva
+        # Create the backup dictionary
         reservation = {
             'id': reservation_id,
             'name': name,
@@ -103,7 +103,7 @@ def reserve():
             'type': type
         }
 
-        # Enviar la reserva a RabbitMQ y comenzar a consumir
+        # Send the reservation to RabbitMQ and start consuming
         print("se envió")
         controller.add_reservation(reservation)
 
