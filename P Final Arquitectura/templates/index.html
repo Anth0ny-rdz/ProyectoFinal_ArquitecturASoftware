@@ -131,13 +131,16 @@
     </form>
 
     <div class="flash-messages">
-      {% with messages = get_flashed_messages() %} {% if messages %} {% for
-      message in messages %}
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
       <p>{{ message }}</p>
-      {% endfor %} {% endif %} {% endwith %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
     </div>
 
-    <h2>Reservas</h2>
+    <h2>Reservas desde la Base de Datos Local</h2>
     <table>
       <thead>
         <tr>

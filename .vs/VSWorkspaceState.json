@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\P Final Arquitectura"
+    "\\P Final Arquitectura",
+    "\\P Final Arquitectura\\api_lugares"
   ],
-  "SelectedNode": "\\P Final Arquitectura",
+  "SelectedNode": "\\P Final Arquitectura\\app.py",
   "PreviewInSolutionExplorer": false
 }
