@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from flask import Flask, request, redirect, url_for, render_template, flash
+from flask import Flask, request, redirect, url_for, render_template, flash, jsonify
 import requests
 import sys
 
@@ -16,6 +16,8 @@ app.secret_key = b'\x8c\x88\x17O\xd2\xfdx\xa6\xb6\x9e\x15\xdfS\x980\xe8\xf4\x19\
 
 # URL of the new time API
 TIME_API_URL = 'http://localhost:5001/api/times'
+# URL of the new places API
+PLACES_API_URL = 'http://localhost:5002/api/places'
 
 @app.route('/')
 def index():
@@ -31,19 +33,16 @@ def index():
         response.raise_for_status()
         available_times = response.json()
 
-        # Define the space types statically
-        space_types = [
-            'Arcade',
-            'Area de cometas',
-            'Cancha',
-            'Cancha de Futbol',
-            'Espacio al aire libre',
-            'Espacio de acampada',
-            'Parque',
-            'Parrillero',
-            'Sala de ESports',
-            'Cancha de basket'
-        ]
+         # Fetch available places from the API
+        response = requests.get(PLACES_API_URL)
+        response.raise_for_status()
+        available_places = response.json()
+
+        # Fetch space types from the APIPlaces database
+        conn_space_types = get_space_types_connection()
+        c = conn_space_types.cursor()
+        c.execute('SELECT DISTINCT name FROM places')
+        space_types = [row['name'] for row in c.fetchall()]
         
         conn.close()
 
@@ -134,6 +133,9 @@ def check_availability():
 
 # Define the database directory
 DATABASE = os.path.join(os.path.dirname(__file__), 'database', 'reservations.sql')
+# Define the database directory for space types
+SPACE_TYPES_DATABASE = os.path.join(os.path.dirname(__file__), '..', 'APIPlaces', 'places.db')
+
 
 def get_db_connection():
     try:
@@ -148,6 +150,22 @@ def get_db_connection():
     except Exception as e:
         print(f"Error connecting to the database: {e}")
         raise
+
+def get_space_types_connection():
+    try:
+        if not os.path.exists(SPACE_TYPES_DATABASE):
+            print(f"Database file {SPACE_TYPES_DATABASE} does not exist!")
+            raise FileNotFoundError(f"Database file {SPACE_TYPES_DATABASE} not found.")
+        else:
+            print(f"Database file {SPACE_TYPES_DATABASE} found.")
+        conn = sqlite3.connect(SPACE_TYPES_DATABASE)
+        conn.row_factory = sqlite3.Row
+        return conn
+    except Exception as e:
+        print(f"Error connecting to the space types database: {e}")
+        raise
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
