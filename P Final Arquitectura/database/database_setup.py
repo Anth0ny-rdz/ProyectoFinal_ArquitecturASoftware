@@ -1,3 +1,4 @@
+import sqlite3
 def initialize_db():
     conn = sqlite3.connect('reservations.sql')
     c = conn.cursor()

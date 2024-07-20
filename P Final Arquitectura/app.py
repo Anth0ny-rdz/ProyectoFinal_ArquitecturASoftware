@@ -1,13 +1,19 @@
 import sqlite3
 import os
 from flask import Flask, request, redirect, url_for, render_template, flash
-from controllers.controller_shurima import ControllerShurima
 from API_Fechas.fechas_api import fechas_api
 from api_lugares.lugares_api import lugares_api
+import sys
+
+# Agregar el directorio QueueManager al PYTHONPATH
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from controllers.controller_shurima import ControllerShurima  # Importar el controlador
+
+controller = ControllerShurima()
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
-controller = ControllerShurima()
 
 # Definir el directorio de la base de datos
 DATABASE = os.path.join(os.path.dirname(__file__), 'database', 'reservations.sql')
@@ -72,6 +78,7 @@ def reserve():
             return redirect(url_for('index'))
 
         # Si no existe, realizar la inserción
+        print("hola")
         c.execute('INSERT INTO reservations (name, email, date, time, type) VALUES (?, ?, ?, ?, ?)', (name, email, date, time, type))
         conn.commit()
         flash('Reserva realizada con éxito.', 'success')
@@ -91,6 +98,7 @@ def reserve():
         }
 
         # Enviar la reserva a RabbitMQ y comenzar a consumir
+        print("se envio")
         controller.add_reservation(reservation)
 
         return redirect(url_for('index'))

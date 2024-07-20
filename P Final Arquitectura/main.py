@@ -1,7 +1,13 @@
 import webbrowser
 from threading import Timer
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
-from app import app, controller
+from app import app
+import sys, os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from QueueManager.Publisher.Publisher import Publisher
+
+publisher = Publisher()
 
 middleware = DispatcherMiddleware(app)
 
@@ -11,7 +17,8 @@ def open_browser():
 if __name__ == "__main__":
     try:
         from werkzeug.serving import run_simple
+        Timer(1, open_browser).start()  # Abre el navegador automáticamente
         # Use the middleware with your app
         run_simple('localhost', 5000, middleware, use_debugger=True)
     finally:
-        controller.close_connection()
+        Publisher.close_connection()
