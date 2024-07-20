@@ -25,13 +25,33 @@ def index():
         c = conn.cursor()
         c.execute('SELECT * FROM reservations')
         reservations = c.fetchall()
+
+        # Fetch available times from the API
+        response = requests.get(TIME_API_URL)
+        response.raise_for_status()
+        available_times = response.json()
+
+        # Define the space types statically
+        space_types = [
+            'Arcade',
+            'Area de cometas',
+            'Cancha',
+            'Cancha de Futbol',
+            'Espacio al aire libre',
+            'Espacio de acampada',
+            'Parque',
+            'Parrillero',
+            'Sala de ESports',
+            'Cancha de basket'
+        ]
+        
         conn.close()
 
         reservations = [dict(row) for row in reservations]
 
         print(f"Reservations fetched from DB: {reservations}")
 
-        return render_template('index.html', reservations=reservations)
+        return render_template('index.html', reservations=reservations, available_times=available_times, space_types=space_types)
     except Exception as e:
         print(f"Error: {e}")
         return f"An error occurred while fetching data: {e}"
@@ -69,9 +89,26 @@ def reserve():
         c.execute('INSERT INTO reservations (name, email, date, time, type) VALUES (?, ?, ?, ?, ?)',
                   (name, email, date, time, type))
         conn.commit()
+
+        # Obtener la ID de la reserva recién creada
+        reservation_id = c.lastrowid
         conn.close()
 
-        flash('Reservation successfully made.', 'success')
+        # Crear el diccionario de reserva
+        reservation = {
+            'id': reservation_id,
+            'name': name,
+            'email': email,
+            'date': date,
+            'time': time,
+            'type': type
+        }
+
+        # Enviar la reserva a RabbitMQ y comenzar a consumir
+        print("se envió")
+        controller.add_reservation(reservation)
+
+        flash('Reserva realizada con éxito.', 'success')
 
         return redirect(url_for('index'))
     except Exception as e:

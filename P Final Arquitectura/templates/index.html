@@ -122,8 +122,8 @@
       <br />
       <label for="type">Tipo de Espacio:</label>
       <select id="type" name="type" required>
-        {% for lugar in lugares %}
-        <option value="{{ lugar.nombre }}">{{ lugar.nombre }}</option>
+        {% for lugar in space_types %}
+        <option value="{{ lugar }}">{{ lugar }}</option>
         {% endfor %}
       </select>
       <br />
@@ -139,6 +139,28 @@
       {% endif %}
       {% endwith %}
     </div>
+
+    <h2>Disponibilidad de Fechas y Tiempos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Tipo de Espacio</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for time in available_times %}
+        <tr>
+          <td>{{ time.name }}</td>
+          <td>{{ time.date }}</td>
+          <td>{{ time.time }}</td>
+          <td>{{ time.type }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
     <h2>Reservas desde la Base de Datos Local</h2>
     <table>
