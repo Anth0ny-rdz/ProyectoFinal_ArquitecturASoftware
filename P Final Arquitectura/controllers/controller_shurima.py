@@ -1,14 +1,15 @@
+# P Final Arquitectura/controller.py
+
+from QueueManager.Publisher.Publisher import Publisher
+
 class ControllerShurima:
-    def __init__(self, model, view):
-        self.model = model
-        self.view = view
+    def __init__(self):
+        self.Publisher = Publisher()
 
-    def add_reservation(self, name, date, time, type):
-        self.model.add_reservation(name, date, time, type)
+    def add_reservation(self, reservation):
+        self.Publisher.add_reservation(reservation)
 
-    def get_reservations(self):
-        return self.model.get_reservations()
+    def close_connection(self):
+        self.Publisher.close_connection()
 
-    def update_view(self):
-        reservations = self.get_reservations()
-        self.view.display(reservations)
+
