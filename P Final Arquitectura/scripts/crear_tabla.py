@@ -7,14 +7,14 @@ def remove_duplicates():
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
 
-    # Obatin all colums from the table lugares
+    # Obtener todas las filas de la tabla lugares
     c.execute('SELECT id, nombre, descripcion FROM lugares')
     rows = c.fetchall()
 
-    #Create a dictionary to redact terms
+    # Crear un diccionario para almacenar los nombres únicos
     unique_lugares = {}
     
-    ## Iterate over the rows and keep only the first occurrence of each name
+    # Iterar sobre las filas y mantener solo la primera aparición de cada nombre
     for row in rows:
         id, nombre, descripcion = row
         if nombre not in unique_lugares:

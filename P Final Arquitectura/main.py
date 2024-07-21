@@ -17,7 +17,7 @@ def open_browser():
 if __name__ == "__main__":
     try:
         from werkzeug.serving import run_simple
-        Timer(1, open_browser).start()  # Open navigator automatically
+        Timer(1, open_browser).start()  #Open autimatically the navigator
         # Use the middleware with your app
         run_simple('localhost', 5000, middleware, use_debugger=True)
     finally:
