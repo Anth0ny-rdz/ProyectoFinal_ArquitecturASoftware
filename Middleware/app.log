@@ -1,0 +1,42 @@
+2024-07-20 23:24:34,424 - app - INFO - Starting App
+2024-07-20 23:24:36,470 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:24:38,530 - app - INFO - Fetching Api_Times
+2024-07-20 23:24:42,627 - app - INFO - Fetching Api_Places
+2024-07-20 23:24:46,722 - app - INFO - All data fetched successfully
+2024-07-20 23:24:48,777 - app - INFO - Reservations fetched from DB: []
+2024-07-20 23:26:48,693 - app - INFO - Starting App
+2024-07-20 23:26:50,740 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:26:52,802 - app - INFO - Fetching Api_Times
+2024-07-20 23:26:56,901 - app - INFO - Fetching Api_Places
+2024-07-20 23:27:00,991 - app - INFO - All data fetched successfully
+2024-07-20 23:27:03,031 - app - INFO - Reservations fetched from DB: []
+2024-07-20 23:29:28,187 - app - INFO - Starting App
+2024-07-20 23:29:30,231 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:29:32,261 - app - INFO - Fetching Api_Times
+2024-07-20 23:29:36,361 - app - INFO - Fetching Api_Places
+2024-07-20 23:29:40,462 - app - INFO - All data fetched successfully
+2024-07-20 23:29:42,500 - app - INFO - Reservations fetched from DB: []
+2024-07-20 23:43:41,967 - app - INFO - Starting App
+2024-07-20 23:43:44,007 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:43:46,066 - app - INFO - Fetching Api_Times
+2024-07-20 23:43:50,156 - app - INFO - Fetching Api_Places
+2024-07-20 23:43:54,253 - app - INFO - All data fetched successfully
+2024-07-20 23:43:56,298 - app - INFO - Reservations fetched from DB: []
+2024-07-20 23:47:10,405 - app - INFO - Starting App
+2024-07-20 23:47:12,455 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:47:14,514 - app - INFO - Fetching Api_Times
+2024-07-20 23:47:18,595 - app - INFO - Fetching Api_Places
+2024-07-20 23:47:22,704 - app - INFO - All data fetched successfully
+2024-07-20 23:47:24,764 - app - INFO - Reservations fetched from DB: []
+2024-07-20 23:48:07,694 - app - INFO - Starting App
+2024-07-20 23:48:09,737 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:48:11,795 - app - INFO - Fetching Api_Times
+2024-07-20 23:48:15,905 - app - INFO - Fetching Api_Places
+2024-07-20 23:48:19,999 - app - INFO - All data fetched successfully
+2024-07-20 23:48:22,043 - app - INFO - Reservations fetched from DB: []
+2024-07-20 23:49:05,106 - app - INFO - Starting App
+2024-07-20 23:49:07,153 - app - INFO - Fetching Api_Reservations
+2024-07-20 23:49:09,196 - app - INFO - Fetching Api_Times
+2024-07-20 23:49:13,294 - app - INFO - Fetching Api_Places
+2024-07-20 23:49:17,393 - app - INFO - All data fetched successfully
+2024-07-20 23:49:19,445 - app - INFO - Reservations fetched from DB: [{'id': 1, 'name': 'JJ', 'date': '2024-07-27', 'time': '16:00', 'type': 'Gym', 'email': 'anthor1999@gmail.com'}]
