@@ -1,4 +1,4 @@
-# P Final Arquitectura/controller.py
+# MVC/controller.py
 
 from QueueManager.Publisher.Publisher import Publisher
 

@@ -18,21 +18,27 @@ app.secret_key = b'\x8c\x88\x17O\xd2\xfdx\xa6\xb6\x9e\x15\xdfS\x980\xe8\xf4\x19\
 TIME_API_URL = 'http://localhost:5001/api/times'
 # URL of the new places API
 PLACES_API_URL = 'http://localhost:5002/api/places'
+# URL of the new logging API
+LOGGING_API_URL = 'http://localhost:5003/log'
 
 @app.route('/')
 def index():
+    log_middleware('INFO', 'Starting App')
     try:
+        log_middleware('INFO', 'Fetching Api_Reservations')
         # Fetch reservations from the local database
         conn = get_db_connection()
         c = conn.cursor()
         c.execute('SELECT * FROM reservations')
         reservations = c.fetchall()
 
+        log_middleware('INFO', 'Fetching Api_Times')
         # Fetch available times from the API
         response = requests.get(TIME_API_URL)
         response.raise_for_status()
         available_times = response.json()
 
+        log_middleware('INFO', 'Fetching Api_Places')
          # Fetch available places from the API
         response = requests.get(PLACES_API_URL)
         response.raise_for_status()
@@ -45,14 +51,15 @@ def index():
         space_types = [row['name'] for row in c.fetchall()]
         
         conn.close()
+        log_middleware('INFO', 'All data fetched successfully')
 
         reservations = [dict(row) for row in reservations]
 
-        print(f"Reservations fetched from DB: {reservations}")
+        log_middleware('INFO', f"Reservations fetched from DB: {reservations}")
 
         return render_template('index.html', reservations=reservations, available_times=available_times, space_types=space_types)
     except Exception as e:
-        print(f"Error: {e}")
+        log_middleware('ERROR', f"Error: {e}")
         return f"An error occurred while fetching data: {e}"
 
 @app.route('/reserve', methods=['POST'])
@@ -164,6 +171,13 @@ def get_space_types_connection():
     except Exception as e:
         print(f"Error connecting to the space types database: {e}")
         raise
+
+def log_middleware(level, message):
+    try:
+        response = requests.post(LOGGING_API_URL, json={'level': level, 'message': message})
+        response.raise_for_status()
+    except Exception as e:
+        print(f"Error: {e}")
 
 
 
